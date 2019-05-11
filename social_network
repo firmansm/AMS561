@@ -1,0 +1,21 @@
+import random
+
+members = ["Arnetta","Thomasena","Tammera","Rosamaria","Lorene","Ileana","Angela","Carletta","Mathew","Kum","Preston","Charlene","Wilson","Kathryne","Ariel","Shawn","Stacie","Coralie","Kenna","Robert","Bethel","Marc","Ferdinand","Rico","Anne","Ginette","Tamiko","Dominque","Dian","Loraine","Sharen","Onie","Temeka","Ceola","Cherly","Samual","Leeanne","Rosamond","Arianna","Calandra","Violette","Jenelle","Luisa","Desiree","Krista","Brittani","Angella","Estela","Gudrun","Maryrose"];
+print(members)
+
+random.seed(1)   # So that rerunning this code produces same result every time
+
+members_friends={}   # make an empty dictionary
+for name in members: # pre-populate with empty list for each person
+    members_friends[name]=[]
+    
+for member in members:
+    nfriends = random.randrange(0,6) # random integer 0<=N<6
+    while len(members_friends[member]) < nfriends:
+        # find a *new* friend who is not me
+        while True:
+            friend = members[random.randrange(0,len(members))]
+            if not (friend in members_friends[member] or friend==member):
+                break
+        members_friends[member].append(friend)
+        members_friends[friend].append(member) # Ensure reciprocal relationship
