@@ -19,3 +19,22 @@ for member in members:
                 break
         members_friends[member].append(friend)
         members_friends[friend].append(member) # Ensure reciprocal relationship
+ 
+#make a list called members_num_friends that contains the number of friends each person has
+
+members_num_friends = []
+for name in members_friends:
+    numbers_of_friends = len(members_friends[name])
+    members_num_friends.append(numbers_of_friends)
+
+# Member who has the most friends (8)
+eightfriends = [i for i, value in enumerate(members_num_friends) if value == 8]
+print("Member who has the most friends (8) is:")
+for i in eightfriends:
+    print("-", members[i])
+
+# Members who has the least friends 
+onefriend = [i for i, value in enumerate(members_num_friends) if value == 1]
+print("Members who has the least friends (1) are:")
+for i in onefriend:
+    print("-", members[i])
